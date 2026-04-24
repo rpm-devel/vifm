@@ -3,15 +3,16 @@
 %bcond_with    x11
 
 Name:           vifm
-Version:        0.8.2
-Release:        5%{?dist}
+Version:        0.14.3
+Release:        1%{?dist}
 Summary:        Lightweight file manager with vi like key-bindings
 
-Group:          Applications/File
 License:        GPLv2+
-URL:            http://vifm.info/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
+URL:            https://vifm.info/
+Source0:        https://github.com/vifm/vifm/releases/download/v%{version}/%{name}-%{version}.tar.bz2
 
+BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  perl-generators
@@ -82,6 +83,10 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 
 %changelog
+* Fri Apr 24 2026 CasjaysDev <rpm-devel@casjaysdev.pro> - 0.14.3-1
+- Update to 0.14.3
+- Modernize spec for EL10
+
 * Fri Feb 09 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.2-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
