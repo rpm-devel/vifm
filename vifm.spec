@@ -1,6 +1,6 @@
-%bcond_with    gtk
+%bcond_without gtk
 %bcond_without libmagic
-%bcond_with    x11
+%bcond_without x11
 
 Name:           vifm
 Version:        0.14.3
@@ -34,7 +34,7 @@ A ncurses based CLI file manager with vi like key-bindings
 
 
 %prep
-%setup -q
+%autosetup
 
 
 %build
@@ -57,7 +57,7 @@ autoreconf -if
 %else
     --with-X11=no
 %endif
-make %{?_smp_mflags}
+%make_build
 
 
 %install
@@ -83,6 +83,10 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 
 %changelog
+* Fri May 22 2026 CasjaysDev <rpm-devel@casjaysdev.pro> - 0.14.3-1
+- Enable gtk, x11, and libmagic features unconditionally
+- Switch to %%autosetup and %%make_build macros
+
 * Fri Apr 24 2026 CasjaysDev <rpm-devel@casjaysdev.pro> - 0.14.3-1
 - Update to 0.14.3
 - Modernize spec for EL10
